@@ -5,7 +5,7 @@ import logo from '../app/favicon.ico';
 
 const Navbar = () => {
   return (
-    <nav className='border-b'>
+    <nav>
       <div className='max-w-7xl mx-auto flex items-center justify-between py-4'>
         <div>
           <Link href="/">
