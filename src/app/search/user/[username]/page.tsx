@@ -7,7 +7,7 @@ const SingleUserPage = async ({ params }: { params: { username: string; } }) => 
   let users: Users | null = null;
 
   try {
-    const response = await fetch(`${process.env.BACKEND_URL}${params.username}&type=users`);
+    const response = await fetch(`https://github.com/search?q=${params.username}&type=users`);
     if (!response.ok) {
       throw new Error('Error fetching user');
     }
@@ -38,7 +38,7 @@ const SingleUserPage = async ({ params }: { params: { username: string; } }) => 
       </div>
 
       <div className="flex justify-end">
-        <Image src={img_url} alt={username} width={0} height={0} className='rounded-md border' style={{width: 'auto', height: 'auto'}} sizes='100vw' />
+        <Image src={img_url} alt={username} width={0} height={0} className='rounded-md border' style={{ width: 'auto', height: 'auto' }} sizes='100vw' />
       </div>
     </div>
   )
