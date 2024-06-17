@@ -6,7 +6,7 @@ import React from 'react'
 
 const UserCard = ({ user }: { user: User }) => {
   const [id, name, username, description, followers, location] = [user.id, user.hl_name, user.display_login, user.profile_bio, user.followers, user.location];
-  const img_url = `${process.env.IMAGE_URL}/${id}?v=4`;
+  const img_url = `https://avatars.githubusercontent.com/u/${id}?v=4`;
 
   return (
     <div className='flex gap-5 border p-5 shadow-md rounded'>
