@@ -44,13 +44,13 @@ const MultiUserPage = ({ params }: { params: { user: string } }) => {
   console.log(page, maxPage);
 
   return (
-    <div className="flex min-h-screen flex-col items-center p-20 gap-5">
+    <div className="flex min-h-screen flex-col items-center lg:p-20 gap-5">
       <SearchForm />
 
       <Suspense fallback={'Loading please wait...'}>
         {
           usersData && usersData.length > 0 ? (
-            <div className='grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto my-10 justify-center'>
+            <div className='grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto my-10 justify-center'>
               {
                 usersData.map((user: User) => (
                   <UserCard key={user.id} user={user} />
@@ -62,8 +62,8 @@ const MultiUserPage = ({ params }: { params: { user: string } }) => {
           )
         }
 
-        <button 
-          className={`${page > maxPage ? 'hidden' : ''} bg-white rounded text-black py-2 px-3 font-semibold hover:bg-black hover:text-white border`} 
+        <button
+          className={`${page > maxPage ? 'hidden' : ''} bg-white text-black rounded-lg mb-5 py-2 px-4 font-semibold border border-black shadow-md transition transform hover:bg-black hover:text-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2`}
           onClick={loadMoreData}
         >
           Load more
