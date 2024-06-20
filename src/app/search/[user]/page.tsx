@@ -41,7 +41,6 @@ const MultiUserPage = ({ params }: { params: { user: string } }) => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(page, maxPage);
 
   return (
     <div className="flex min-h-screen flex-col items-center lg:p-20 gap-5">

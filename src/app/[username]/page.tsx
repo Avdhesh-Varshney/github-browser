@@ -98,6 +98,7 @@ const SingleUserPage = async ({ params }: { params: { username: string; } }) => 
   return (
     <div className='mx-auto max-w-6xl px-5 py-10'>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
         <div className="flex flex-col gap-2">
           <div className="md:col-span-1 flex flex-col items-center border p-3 rounded-lg bg-white">
             <Image src={avatar_url} alt={login} width={200} height={200} className='rounded-full border' />
@@ -150,13 +151,13 @@ const SingleUserPage = async ({ params }: { params: { username: string; } }) => 
                     </span>
                   }
                 </div>
-                
+
                 <div className="space-y-2 space-x-2">
-                  {email && <Card params={["Email", email, `mailto:${email}`]} />}
-                  {location && <Card params={["Location", location, null]} />}
-                  {company && <Card params={["Company/Organization", company, null]} />}
-                  {blog && <Card params={["Portfolio", blog, blog]} />}
-                  {bio && <Card params={["Description", bio, null]} />}
+                  {email && <Card params={["Email", email, `mailto:${email}`, true]} />}
+                  {location && <Card params={["Location", location, null, false]} />}
+                  {company && <Card params={["Company/Organization", company, null, false]} />}
+                  {blog && <Card params={["Portfolio", blog, blog, true]} />}
+                  {bio && <Card params={["Description", bio, null, false]} />}
                 </div>
               </div>
             }
@@ -166,24 +167,25 @@ const SingleUserPage = async ({ params }: { params: { username: string; } }) => 
               <h3 className="text-2xl font-semibold text-white border-b-2 border-blue-500 pb-2 mb-4">Account Details</h3>
 
               <div className="space-y-2 space-x-2">
-                {created_at && <Card params={['A/C Created On', formatDate(created_at), null]} />}
-                {updated_at && <Card params={['A/C Updated On', formatDate(updated_at), null]} />}
+                {created_at && <Card params={['A/C Created On', formatDate(created_at), null, false]} />}
+                {updated_at && <Card params={['A/C Updated On', formatDate(updated_at), null, false]} />}
 
-                {followers > 0 && <Card params={['Followers', followers, `${params.username}/followers`]} />}
-                {following > 0 && <Card params={['Following', following, `${params.username}/following`]} />}
-                {public_repos > 0 && <Card params={['Repositories', public_repos, `${params.username}/repos`]} />}
-                {public_gists > 0 && <Card params={['Gists', public_gists, `${params.username}/gists`]} />}
+                {followers > 0 && <Card params={['Followers', followers, `${params.username}/followers`, true]} />}
+                {following > 0 && <Card params={['Following', following, `${params.username}/following`, true]} />}
+                {public_repos > 0 && <Card params={['Repositories', public_repos, `${params.username}/repos`, false]} />}
+                {public_gists > 0 && <Card params={['Gists', public_gists, `${params.username}/gists`, false]} />}
 
-                <Card params={['', 'Recent Events', `${params.username}/events`]} />
-                <Card params={['', 'Recent Notifications', `${params.username}/notifications`]} />
-                <Card params={['', 'Organizations', `${params.username}/organizations`]} />
-                <Card params={['', 'Subscriptions', `${params.username}/subscriptions`]} />
-                <Card params={['', 'Starred Repos', `${params.username}/starred`]} />
+                <Card params={['', 'Recent Events', `${params.username}/events`, false]} />
+                <Card params={['', 'Recent Notifications', `${params.username}/notifications`, false]} />
+                <Card params={['', 'Organizations', `${params.username}/organizations`, false]} />
+                <Card params={['', 'Subscriptions', `${params.username}/subscriptions`, false]} />
+                <Card params={['', 'Starred Repos', `${params.username}/starred`, false]} />
               </div>
             </div>
 
           </div>
         </div>
+
       </div>
     </div>
   )
