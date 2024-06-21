@@ -1,15 +1,20 @@
 'use client'
 
+// False -> Don't open the Modal
+// True -> Open the Modal
+
 import React, { useState } from 'react'
 import { MdArrowOutward } from 'react-icons/md'
 import Link from 'next/link'
-import { CardProps, User } from '@/types/index'
+import { CardProps, FollowerDetails } from '@/types/index'
 import { FetchData } from '@/actions/FetchData'
 import Modal from './Modal'
+import Image from 'next/image'
+import Button from '@/components/shared/Button'
 
 const Card: React.FC<CardProps> = ({ params }) => {
   const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState<User[] | null>(null);
+  const [data, setData] = useState<FollowerDetails[] | null>(null);
 
   const handleOpenModal = async () => {
     setShowModal(true);
@@ -50,14 +55,17 @@ const Card: React.FC<CardProps> = ({ params }) => {
       }
 
       <Modal isOpen={showModal} onClose={handleCloseModal} title={params[0]}>
-        <div className="text-center text-black">
-          {data?.map((user) => (
-            <div key={user.id} className="mb-4">
-              <p className="font-semibold">User ID: {user.id}</p>
-              <p>Username: {user.login}</p>
+        {data?.map((user) => (
+          <div key={user.id} className="flex items-center space-x-4 p-4 border rounded-lg shadow-md">
+            <div className="flex-shrink-0 w-16 h-16">
+              <Image src={user.avatar_url} width={64} height={64} sizes='100vw' alt={user.login} />
             </div>
-          ))}
-        </div>
+            <div className="flex-grow text-black">
+              <p>Username: {user.login}</p>
+              <Button text='GitHub URL' onClick={() => window.open(user.html_url, '_blank')} />
+            </div>
+          </div>
+        ))}
       </Modal>
     </div>
   )

@@ -4,7 +4,7 @@ export const FetchData = async (URL: string) => {
   try {
     const response = await fetch(URL, {
       next: {
-        revalidate: 10800,
+        revalidate: 21600,
       },
     });
 

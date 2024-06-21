@@ -5,12 +5,6 @@ import { MdClose } from 'react-icons/md';
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto ${isOpen ? '' : 'hidden'}`}>
       <div className="fixed inset-0 bg-black opacity-50" onClick={onClose}></div>
@@ -25,7 +19,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             </button>
           </div>
           
-          <div className="p-6 overflow-y-auto max-h-96">{children}</div>
+          <div className="p-6 overflow-y-auto max-h-96 flex flex-col gap-3">{children}</div>
         </div>
       </div>
     </div>

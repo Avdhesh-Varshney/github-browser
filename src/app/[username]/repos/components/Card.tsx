@@ -5,7 +5,7 @@ import { FaStar } from 'react-icons/fa'
 
 const Card = ({ username, repo }: { username: string, repo: Repository }) => {
   return (
-    <div className="relative bg-[#12151e] text-white p-6 rounded-lg shadow-lg flex flex-col justify-between h-full gap-2">
+    <div className="relative bg-[#12151e] text-white p-6 rounded-lg shadow-lg flex flex-col justify-between h-full gap-2 hover:scale-105">
       {username === repo.name && (
         <span title='Introductory Repository' className="absolute top-4 right-4 bg-yellow-400 text-white p-2 rounded-full shadow-lg flex items-center justify-center">
           <FaStar size={24} className="text-white" />

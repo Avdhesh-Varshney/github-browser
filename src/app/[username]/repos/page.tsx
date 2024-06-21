@@ -58,11 +58,13 @@ const Repos = ({ params }: { params: { username: string; } }) => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center mb-5">
+    <div className="flex flex-col items-center justify-center my-5 gap-10">
       {/* Owner Repositories Section */}
-      <div className="w-full mb-8 max-w-7xl">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white border-b-2 border-blue-500 inline-block">Owner Repositories</h2>
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className='flex flex-col justify-center items-center border-b my-10'>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white border-b-2 border-blue-500 inline-block">
+          Owner Repositories
+        </h2>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 rounded-lg shadow-md">
           {response?.filter(repo => !repo.fork).map(repo => (
             <Card key={repo.id} username={params.username} repo={repo} />
           ))}
@@ -70,9 +72,11 @@ const Repos = ({ params }: { params: { username: string; } }) => {
       </div>
 
       {/* Forked Repositories Section */}
-      <div className="w-full max-w-7xl">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white border-b-2 border-blue-500 inline-block">Forked Repositories</h2>
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className='flex flex-col items-center justify-center border-b my-10'>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white border-b-2 border-blue-500 inline-block">
+          Forked Repositories
+        </h2>
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 rounded-lg shadow-md">
           {response?.filter(repo => repo.fork).map(repo => (
             <Card key={repo.id} username={params.username} repo={repo} />
           ))}
@@ -80,7 +84,7 @@ const Repos = ({ params }: { params: { username: string; } }) => {
       </div>
 
       <button
-        className={`bg-white text-black rounded-lg m-5 py-2 px-4 font-semibold border border-black shadow-md transition transform hover:bg-black hover:text-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 ${hasMore? '': 'hidden'}`}
+        className={`bg-white text-black rounded-lg m-5 py-2 px-4 font-semibold border border-black shadow-md transition transform hover:bg-black hover:text-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 ${hasMore ? '' : 'hidden'}`}
         onClick={loadMoreData}
       >
         Load more
