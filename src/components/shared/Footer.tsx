@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="w-full md:w-1/2 text-light mb-3 md:mb-0">
         <h5 className="text-xl mb-3">GitHub Browser 🚀</h5>
         <p className="text-sm">
-          The GitHub User and Repository Explorer is a web app simplifying discovery of GitHub users and repositories. It enables keyword-based user searches, detailed profiles, repository exploration, issue tracking, and personalized recommendations. With bookmarking, activity feeds, and comparisons, it's a versatile tool for GitHub users.
+          The GitHub User and Repository Explorer is a web app simplifying discovery of GitHub users and repositories. It enables keyword-based user searches, detailed profiles, repository exploration, issue tracking, and personalized recommendations. With bookmarking, activity feeds, and comparisons, it&apos;s a versatile tool for GitHub users.
         </p>
       </div>
 
