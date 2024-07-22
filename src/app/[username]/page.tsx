@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../Context/store';
 import { FetchData } from '@/utils/FetchData';
+import ContributionGraph from './components/ContributionGraph';
 
 import LeftBar from './components/LeftBar';
-import RightBar from './components/RightBar';
+import GithubStat from './components/GitHubStat';
 
 const SingleUserPage = ({ params }: { params: { username: string } }) => {
   const { setUserName, usersDetails, setUsersDetails } = useGlobalContext();
@@ -36,11 +37,12 @@ const SingleUserPage = ({ params }: { params: { username: string } }) => {
   }
 
   return (
-    <div className="py-10">
+    <div className="flex flex-col my-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <LeftBar />
-        <RightBar />
+        <div className='md:col-span-1'><LeftBar /></div>
+        <div className="md:col-span-2"><GithubStat /></div>
       </div>
+      <div className="mx-auto"><ContributionGraph /></div>
     </div>
   );
 };

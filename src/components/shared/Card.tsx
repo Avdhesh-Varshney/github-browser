@@ -3,14 +3,16 @@
 // False -> Don't open the Modal
 // True -> Open the Modal
 
-import React, { useState } from 'react'
-import { MdArrowOutward } from 'react-icons/md'
-import Link from 'next/link'
-import { CardProps, FollowerDetails } from '@/types/index'
-import { FetchData } from '@/utils/FetchData'
-import Modal from './Modal'
-import Image from 'next/image'
-import Button from '@/components/shared/Button'
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
+import Modal from './Modal';
+import Button from '@/components/shared/Button';
+import { FetchData } from '@/utils/FetchData';
+import { CardProps, FollowerDetails } from '@/types/index';
+
+import { MdArrowOutward } from 'react-icons/md';
 
 const Card: React.FC<CardProps> = ({ params }) => {
   const [showModal, setShowModal] = useState(false);
@@ -71,4 +73,4 @@ const Card: React.FC<CardProps> = ({ params }) => {
   )
 }
 
-export default Card
+export default Card;
