@@ -1,14 +1,24 @@
-import { FetchData } from '@/actions/FetchData';
+import { FetchData } from '@/utils/FetchData';
+import Button from '@/components/shared/Button';
 import Card from '@/components/shared/Card';
-import { formatDate } from '@/functions/utils';
+import { formatDate } from '@/utils/Functions';
 import { Repository } from '@/types';
 import Link from 'next/link';
 import React from 'react'
 import { FaStar } from 'react-icons/fa';
+import CopyCard from '../components/CopyCard';
 
 const exploreRepository = async ({ params }: { params: { username: string, repository: string } }) => {
   const url = `${process.env.REPO_URL}/${params.username}/${params.repository}`;
   const repo: Repository = await FetchData(url);
+
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Text copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  };
 
   return (
     <div className="my-5">
@@ -37,12 +47,20 @@ const exploreRepository = async ({ params }: { params: { username: string, repos
               </span>
             </Link>
           </div>
+
+          <div className="grid grid-cols-2 gap-1">
+            <CopyCard value={repo.git_url} name="Copy Git URL" />
+            <CopyCard value={repo.ssh_url} name="Copy SSH URL" />
+            <CopyCard value={repo.svn_url} name="Copy SVN URL" />
+            <CopyCard value={repo.clone_url} name="Copy Cloning URL" />
+          </div>
         </div>
 
         {/* Right Bar */}
         <div className="md:col-span-2">
           <div className="rounded-lg shadow flex flex-col gap-4">
 
+            {/* Repository Details */}
             <div className='bg-[#222325] p-6 rounded-lg shadow-md'>
               <h3 className="text-2xl font-semibold text-white border-b-2 border-blue-500 pb-2 mb-4">Repository Details</h3>
               <div className="space-y-2 space-x-2">
@@ -51,8 +69,8 @@ const exploreRepository = async ({ params }: { params: { username: string, repos
                 <Card params={['Pushed On', formatDate(repo.pushed_at), null, false]} />
 
                 {repo.homepage && <Card params={['', 'Deployed Link', repo.homepage, false]} />}
-                <Card params={['Repo Size (in KB)', repo.size, null, false]} />
-                {repo.language && <Card params={['Most Language Used', repo.language, null, false]} />}
+                <Card params={['Repo Size (in MB)', Math.round(repo.size / 1024), null, false]} />
+                {repo.language && <Card params={['Most Used Language', repo.language, null, false]} />}
 
 
                 <Card params={['Default Branch', repo.default_branch, null, false]} />
@@ -67,17 +85,13 @@ const exploreRepository = async ({ params }: { params: { username: string, repos
               </div>
             </div>
 
+            {/* Exploring Details */}
             <div className='bg-[#222325] p-6 rounded-lg shadow-md'>
               <h3 className="text-2xl font-semibold text-white border-b-2 border-blue-500 pb-2 mb-4">Exploring Details</h3>
 
               <div className="space-x-2 space-y-2">
-                <Card params={['Copy Git URL', 'Git URL', repo.git_url, false]} />
-                <Card params={['Copy SSH URL', 'SSH URL', repo.ssh_url, false]} />
-                <Card params={['Copy SVN URL', 'SVN URL', repo.svn_url, false]} />
-                <Card params={['HTTPS URL', 'Clone URL', repo.clone_url, false]} />
-
-                {repo.allow_forking && <Card params={['No. of Forks', repo.forks_count, `${params.repository}/forks`, true]} />}
-                {(repo.stargazers_count > 0) && <Card params={['Stars Earned', repo.stargazers_count, `${params.repository}/stars`, true]} />}
+                {repo.allow_forking && <Card params={['No. of Forks', repo.forks_count, `https://api.github.com/repos/${params.username}/${params.repository}/forks`, true]} />}
+                {(repo.stargazers_count > 0) && <Card params={['Stars Earned', repo.stargazers_count, `https://api.github.com/repos/${params.username}/${params.repository}/stars`, true]} />}
 
                 {repo.has_issues && <Card params={['Issues Opened', repo.open_issues_count, `${params.repository}/issues`, false]} />}
                 <Card params={['', 'Repository Events', repo.events_url, false]} />

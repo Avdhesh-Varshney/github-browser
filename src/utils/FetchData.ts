@@ -1,4 +1,4 @@
-'use server'
+'use server';
 
 export const FetchData = async (URL: string) => {
   try {

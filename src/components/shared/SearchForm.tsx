@@ -40,4 +40,4 @@ const SearchForm = ({text}: {text: string}) => {
   )
 }
 
-export default SearchForm
+export default SearchForm;

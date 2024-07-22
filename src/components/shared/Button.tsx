@@ -1,12 +1,12 @@
 import { ButtonProps } from '@/types';
-import React from 'react'
+import React from 'react';
 
 const Button: React.FC<ButtonProps> = ({ text, onClick, hidden = false }) => {
   if (hidden) return null;
 
   return (
     <button
-      className='bg-white text-black rounded-lg py-2 px-4 font-semibold border transition-duration-300 hover:bg-black hover:text-white hover:scale-105 focus:outline-none'
+      className='bg-[#181918] text-white rounded py-2 px-6 border border-gray-600 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-[#282828] active:bg-[#3a3a3a]'
       onClick={onClick}
     >
       {text}
@@ -14,4 +14,4 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, hidden = false }) => {
   );
 };
 
-export default Button
+export default Button;

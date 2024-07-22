@@ -1,6 +1,6 @@
 'use client';
 
-import { FetchData } from '@/actions/FetchData';
+import { FetchData } from '@/utils/FetchData';
 import { Repository } from '@/types';
 import React, { useState, useEffect } from 'react';
 import Card from './components/Card';

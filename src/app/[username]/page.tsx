@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../Context/store';
-import { FetchData } from '@/actions/FetchData';
+import { FetchData } from '@/utils/FetchData';
 
 import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';

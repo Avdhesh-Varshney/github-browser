@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../../../components/shared/Card'
-import { formatDate } from '@/functions/utils'
+import { formatDate } from '@/utils/Functions'
 import UserDetailsCard from './shared/UserDetailsCard'
 import { useGlobalContext } from '@/app/Context/store'
 
@@ -24,8 +24,8 @@ const RightBar = () => {
             <Card params={['A/C Created On', formatDate(user.created_at), null, false]} />
             <Card params={['A/C Updated On', formatDate(user.updated_at), null, false]} />
 
-            {user.followers > 0 && <Card params={['Followers', user.followers, `${userName}/followers`, true]} />}
-            {user.following > 0 && <Card params={['Following', user.following, `${userName}/following`, true]} />}
+            {user.followers > 0 && <Card params={['Followers', user.followers, `https://api.github.com/users/${userName}/followers`, true]} />}
+            {user.following > 0 && <Card params={['Following', user.following, `https://api.github.com/users/${userName}/following`, true]} />}
             {user.public_repos > 0 && <Card params={['Repositories', user.public_repos, `${userName}/repos`, false]} />}
             {user.public_gists > 0 && <Card params={['Gists', user.public_gists, `${userName}/gists`, false]} />}
 

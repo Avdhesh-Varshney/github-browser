@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { MdArrowOutward } from 'react-icons/md'
 import Link from 'next/link'
 import { CardProps, FollowerDetails } from '@/types/index'
-import { FetchData } from '@/actions/FetchData'
+import { FetchData } from '@/utils/FetchData'
 import Modal from './Modal'
 import Image from 'next/image'
 import Button from '@/components/shared/Button'
@@ -18,9 +18,9 @@ const Card: React.FC<CardProps> = ({ params }) => {
 
   const handleOpenModal = async () => {
     setShowModal(true);
+    if (!params[2]) return null;
     try {
-      const url = `https://api.github.com/users/${params[2]}`;
-      const response = await FetchData(url);
+      const response = await FetchData(params[2]);
       setData(response);
     } catch (error) {
       console.error('Error fetching data:', error);
