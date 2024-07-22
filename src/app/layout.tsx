@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { GlobalContextProvider } from "./Context/store";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 export const metadata: Metadata = {
   title: "GitHub Browser",
@@ -19,10 +21,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} max-w-7xl mx-auto`}>
+    <html lang="en" className="h-full">
+      <body className={`${poppins.className} h-full flex flex-col`}>
         <GlobalContextProvider>
-          {children}
+          <Navbar />
+
+          <div className="flex-1 w-full max-w-7xl mx-auto">
+            {children}
+          </div>
+
+          <Footer />
         </GlobalContextProvider>
       </body>
     </html>
