@@ -51,13 +51,13 @@ const LeftBar = () => {
       <p className='flex flex-col items-center p-2 rounded-lg border bg-[#181918]'>UserID - {user.id}</p>
 
       <p className="flex my-4 gap-1 items-center">
-        <Link href="?tab=followers" className="flex items-center hover:text-blue-500">
+        <Link href="?tab=followers" className="flex items-center">
           <RiGroupLine className="mr-1" />
           <span>{user.followers}</span>
           <span className="ml-1 text-gray-600">followers</span>
         </Link>
         <span className="mx-2">·</span>
-        <Link href="?tab=following" className="hover:text-blue-500">
+        <Link href="?tab=following">
           <span>{user.following}</span>
           <span className="ml-1 text-gray-600">following</span>
         </Link>
@@ -79,12 +79,16 @@ const LeftBar = () => {
         <p className="flex gap-1 items-center">
           <VscAccount /> <span className="text-gray-600">Updated At </span> {formatDate(user.updated_at)}
         </p>
-        <p className="flex gap-1 items-center">
-          <GoRepo /> <span className="text-gray-600">Repositories</span> {user.public_repos}
-        </p>
-        <p className="flex gap-1 items-center">
-          <VscGistSecret /> <span className="text-gray-600">Gists</span> {user.public_gists}
-        </p>
+        <Link href="?tab=repositories">
+          <p className="flex gap-1 items-center">
+            <GoRepo /> <span className="text-gray-600">Repositories</span> {user.public_repos}
+          </p>
+        </Link>
+        <Link href="?tab=gists">
+          <p className="flex gap-1 items-center">
+            <VscGistSecret /> <span className="text-gray-600">Gists</span> {user.public_gists}
+          </p>
+        </Link>
       </div>
 
       <div className="flex flex-col border-t-2 mt-4 pt-4 gap-2">

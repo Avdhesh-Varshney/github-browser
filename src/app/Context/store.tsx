@@ -1,52 +1,62 @@
 'use client';
 
-import { User, UserDetails } from "@/types";
+import { RepositoryData, User, UserDetails } from "@/types";
 import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
 
 interface ContextProps {
-  userName: string,
-  setUserName: Dispatch<SetStateAction<string>>,
+  userName: string;
+  setUserName: Dispatch<SetStateAction<string>>;
 
-  repoName: string,
-  setRepoName: Dispatch<SetStateAction<string>>,
+  repoName: string;
+  setRepoName: Dispatch<SetStateAction<string>>;
 
-  searchUserData: User[],
-  setSearchUserData: Dispatch<SetStateAction<User[]>>,
+  repoData: RepositoryData[];
+  setRepoData: Dispatch<SetStateAction<RepositoryData[]>>;
+
+  searchUserData: User[];
+  setSearchUserData: Dispatch<SetStateAction<User[]>>;
 
   usersDetails: UserDetails;
   setUsersDetails: Dispatch<SetStateAction<UserDetails>>;
 };
 
-const GlobalContext = createContext<ContextProps>({
+export const GlobalContext = createContext<ContextProps>({
   userName: '',
-  setUserName: (): string => '',
+  setUserName: () => {},
 
   repoName: '',
-  setRepoName: (): string => '',
+  setRepoName: () => {},
+
+  repoData: [],
+  setRepoData: () => {},
 
   searchUserData: [],
-  setSearchUserData: (): User[] => [],
+  setSearchUserData: () => {},
 
   usersDetails: {} as UserDetails,
-  setUsersDetails: () => ({} as UserDetails)
+  setUsersDetails: () => {}
 });
 
-export const GlobalContextProvider = ({ children }: { children: any }) => {
-  const [userName, setUserName] = useState('');
-  const [repoName, setRepoName] = useState('');
-  const [searchUserData, setSearchUserData] = useState<[] | User[]>([]);
+export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
+  const [userName, setUserName] = useState<string>('');
+  const [repoName, setRepoName] = useState<string>('');
+  const [repoData, setRepoData] = useState<RepositoryData[]>([]);
+  const [searchUserData, setSearchUserData] = useState<User[]>([]);
   const [usersDetails, setUsersDetails] = useState<UserDetails>({} as UserDetails);
 
   return (
-    <GlobalContext.Provider value={{ userName, setUserName, 
-                                      repoName, setRepoName, 
-                                      searchUserData, setSearchUserData,
-                                      usersDetails, setUsersDetails, 
-                                    }}
+    <GlobalContext.Provider
+      value={{
+        userName, setUserName,
+        repoName, setRepoName,
+        repoData, setRepoData,
+        searchUserData, setSearchUserData,
+        usersDetails, setUsersDetails
+      }}
     >
       {children}
     </GlobalContext.Provider>
-  )
+  );
 };
 
 export const useGlobalContext = () => useContext(GlobalContext);

@@ -20,7 +20,7 @@ export function getGitHubYears(joinYear: number | undefined): number[] {
   return years;
 }
 
-const GitHubContributions = () => {
+const ContributionGraph = () => {
   const { usersDetails: user } = useGlobalContext();
   const [calendarYear, setCalendarYear] = useState<number | undefined>(undefined);
   const createdYear = new Date(user.created_at).getFullYear();
@@ -57,4 +57,4 @@ const GitHubContributions = () => {
   );
 };
 
-export default GitHubContributions;
+export default ContributionGraph;

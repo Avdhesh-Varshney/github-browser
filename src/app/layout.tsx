@@ -26,9 +26,9 @@ export default function RootLayout({
         <GlobalContextProvider>
           <Navbar />
 
-          <div className="flex-1 w-full max-w-7xl mx-auto">
+          <main className="flex-1 w-full max-w-7xl mx-auto">
             {children}
-          </div>
+          </main>
 
           <Footer />
         </GlobalContextProvider>

@@ -33,7 +33,7 @@ const FollowUsers = () => {
       }
     };
     fetchData(currentPage);
-  }, [URL, currentPage]);
+  }, [currentPage]);
 
   const handlePrevious = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));

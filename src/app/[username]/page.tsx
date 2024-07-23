@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../Context/store';
+import { useSearchParams } from 'next/navigation';
 import { FetchData } from '@/utils/FetchData';
-import ContributionGraph from './components/ContributionGraph';
+import ContributionGraph from '@/components/shared/ContributionGraph';
 
 import LeftBar from './components/LeftBar';
 import GithubStat from './components/GitHubStat';
-import { useSearchParams } from 'next/navigation';
-import FollowUsers from './components/FollowUsers';
+import FollowUsers from './components/tabs/FollowUsers';
+import Repository from './components/tabs/Repository';
 
 const Profile = ({ params }: { params: { username: string } }) => {
   const searchParams = useSearchParams();
@@ -42,12 +43,13 @@ const Profile = ({ params }: { params: { username: string } }) => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto md:px-16 px-6 my-20">
+    <div className="max-w-7xl mx-auto md:px-16 px-6 my-16">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div className='md:col-span-1'><LeftBar /></div>
         {!tab && <div className="md:col-span-2"><GithubStat /></div>}
         {tab === "followers" && <div className="md:col-span-2"><FollowUsers /></div>}
         {tab === "following" && <div className="md:col-span-2"><FollowUsers /></div>}
+        {tab === "repositories" && <div className="md:col-span-2"><Repository /></div>}
       </div>
       {!tab && <div className="mx-auto mt-20"><ContributionGraph /></div>}
     </div>
