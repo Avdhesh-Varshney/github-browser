@@ -1,9 +1,10 @@
 import { useGlobalContext } from '@/app/Context/store';
 import Button from '@/components/shared/Button';
+import { RepositoryData } from '@/types';
 import { FetchData } from '@/utils/FetchData';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { IoMdStarOutline } from 'react-icons/io';
 
 const perPage = 8;
 
@@ -15,9 +16,10 @@ const getRandomEmoji = () => {
 };
 
 const Repository = () => {
-  const { usersDetails: user, repoData, setRepoData } = useGlobalContext();
+  const { usersDetails: user } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [repoData, setRepoData] = useState<RepositoryData[]>([]);
   const totalPages = Math.ceil(user.public_repos / perPage);
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const Repository = () => {
                     {getRandomEmoji()} {repo.name}
                   </span>
                   <span className='font-light text-sm flex items-center'>
-                    <FaStar className='mr-1' /> {repo.stargazers_count}
+                    <IoMdStarOutline className='mr-1' /> {repo.stargazers_count}
                   </span>
                 </h4>
                 <p className='opacity-55 mt-1'>{repo.description}</p>

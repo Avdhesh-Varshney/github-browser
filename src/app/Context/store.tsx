@@ -7,12 +7,6 @@ interface ContextProps {
   userName: string;
   setUserName: Dispatch<SetStateAction<string>>;
 
-  repoName: string;
-  setRepoName: Dispatch<SetStateAction<string>>;
-
-  repoData: RepositoryData[];
-  setRepoData: Dispatch<SetStateAction<RepositoryData[]>>;
-
   searchUserData: User[];
   setSearchUserData: Dispatch<SetStateAction<User[]>>;
 
@@ -24,12 +18,6 @@ export const GlobalContext = createContext<ContextProps>({
   userName: '',
   setUserName: () => {},
 
-  repoName: '',
-  setRepoName: () => {},
-
-  repoData: [],
-  setRepoData: () => {},
-
   searchUserData: [],
   setSearchUserData: () => {},
 
@@ -39,8 +27,6 @@ export const GlobalContext = createContext<ContextProps>({
 
 export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [userName, setUserName] = useState<string>('');
-  const [repoName, setRepoName] = useState<string>('');
-  const [repoData, setRepoData] = useState<RepositoryData[]>([]);
   const [searchUserData, setSearchUserData] = useState<User[]>([]);
   const [usersDetails, setUsersDetails] = useState<UserDetails>({} as UserDetails);
 
@@ -48,8 +34,6 @@ export const GlobalContextProvider = ({ children }: { children: React.ReactNode 
     <GlobalContext.Provider
       value={{
         userName, setUserName,
-        repoName, setRepoName,
-        repoData, setRepoData,
         searchUserData, setSearchUserData,
         usersDetails, setUsersDetails
       }}

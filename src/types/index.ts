@@ -223,5 +223,29 @@ export type RepositoryData = {
   open_issues: number;
   watchers: number;
   default_branch: string;
-}
+  temp_clone_token: string | null;
+  network_count: number;
+  subscribers_count: number;
+};
 // Type finished!
+
+// Repository Content Datatype
+type Link = {
+  self: string;
+  git: string;
+  html: string;
+};
+
+export type RepositoryContent = {
+  name: string;
+  path: string;
+  sha: string;
+  size: number;
+  url: string;
+  html_url: string;
+  git_url: string;
+  download_url: string | null;
+  type: string;
+  _links: Link;
+};
+// Datatype Finished!
