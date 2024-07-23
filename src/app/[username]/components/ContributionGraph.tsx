@@ -26,7 +26,6 @@ const GitHubContributions = () => {
   const createdYear = new Date(user.created_at).getFullYear();
   const today = new Date().getFullYear();
   const years = getGitHubYears(createdYear);
-  console.log(years)
 
   return (
     <>

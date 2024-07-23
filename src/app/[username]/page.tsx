@@ -37,12 +37,12 @@ const SingleUserPage = ({ params }: { params: { username: string } }) => {
   }
 
   return (
-    <div className="flex flex-col my-6">
+    <div className="max-w-7xl mx-auto md:px-16 px-6 my-20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div className='md:col-span-1'><LeftBar /></div>
         <div className="md:col-span-2"><GithubStat /></div>
       </div>
-      <div className="mx-auto"><ContributionGraph /></div>
+      <div className="mx-auto mt-20"><ContributionGraph /></div>
     </div>
   );
 };

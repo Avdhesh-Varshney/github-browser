@@ -6,7 +6,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className='py-5 shadow-lg flex flex-col md:flex-row items-center justify-evenly text-md-start bg-[#181918]'>
+    <footer className='p-6 shadow-lg flex flex-col md:flex-row items-center justify-evenly text-center bg-[#181918]'>
 
       <div className="w-full md:w-1/2 text-light mb-3 md:mb-0">
         <h5 className="text-xl mb-3">GitHub Browser 🚀</h5>
