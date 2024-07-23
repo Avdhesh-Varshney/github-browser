@@ -10,13 +10,13 @@ import Image from 'next/image';
 import Modal from './Modal';
 import Button from '@/components/shared/Button';
 import { FetchData } from '@/utils/FetchData';
-import { CardProps, FollowerDetails } from '@/types/index';
+import { CardProps, FollowData } from '@/types/index';
 
 import { MdArrowOutward } from 'react-icons/md';
 
 const Card: React.FC<CardProps> = ({ params }) => {
   const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState<FollowerDetails[] | null>(null);
+  const [data, setData] = useState<FollowData[] | null>(null);
 
   const handleOpenModal = async () => {
     setShowModal(true);

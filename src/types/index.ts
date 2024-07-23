@@ -80,19 +80,6 @@ export type Users = {
 }
 // Type finished!
 
-// Interface for modal and card components
-export interface CardProps {
-  params: [string, string | number, string | null, boolean];
-}
-
-export interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-}
-// Interface finished!
-
 // Interface for Repos page 
 export interface Repository {
   id: number;
@@ -215,7 +202,7 @@ export interface ButtonProps {
 // Interface finished!
 
 // Followers Datatype
-export type FollowerDetails = {
+export type FollowData = {
   login: string;
   id: number;
   node_id: string;

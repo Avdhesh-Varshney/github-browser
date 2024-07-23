@@ -7,8 +7,13 @@ import ContributionGraph from './components/ContributionGraph';
 
 import LeftBar from './components/LeftBar';
 import GithubStat from './components/GitHubStat';
+import { useSearchParams } from 'next/navigation';
+import FollowUsers from './components/FollowUsers';
 
-const SingleUserPage = ({ params }: { params: { username: string } }) => {
+const Profile = ({ params }: { params: { username: string } }) => {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
+
   const { setUserName, usersDetails, setUsersDetails } = useGlobalContext();
   const [loading, setLoading] = useState(true);
 
@@ -40,11 +45,13 @@ const SingleUserPage = ({ params }: { params: { username: string } }) => {
     <div className="max-w-7xl mx-auto md:px-16 px-6 my-20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div className='md:col-span-1'><LeftBar /></div>
-        <div className="md:col-span-2"><GithubStat /></div>
+        {!tab && <div className="md:col-span-2"><GithubStat /></div>}
+        {tab === "followers" && <div className="md:col-span-2"><FollowUsers /></div>}
+        {tab === "following" && <div className="md:col-span-2"><FollowUsers /></div>}
       </div>
-      <div className="mx-auto mt-20"><ContributionGraph /></div>
+      {!tab && <div className="mx-auto mt-20"><ContributionGraph /></div>}
     </div>
   );
 };
 
-export default SingleUserPage;
+export default Profile;

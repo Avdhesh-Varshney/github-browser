@@ -50,8 +50,17 @@ const LeftBar = () => {
 
       <p className='flex flex-col items-center p-2 rounded-lg border bg-[#181918]'>UserID - {user.id}</p>
 
-      <p className='flex my-4 gap-1 items-center'>
-        <RiGroupLine /> {user.followers} <span className="text-gray-600">followers</span> · {user.following} <span className="text-gray-600">following</span>
+      <p className="flex my-4 gap-1 items-center">
+        <Link href="?tab=followers" className="flex items-center hover:text-blue-500">
+          <RiGroupLine className="mr-1" />
+          <span>{user.followers}</span>
+          <span className="ml-1 text-gray-600">followers</span>
+        </Link>
+        <span className="mx-2">·</span>
+        <Link href="?tab=following" className="hover:text-blue-500">
+          <span>{user.following}</span>
+          <span className="ml-1 text-gray-600">following</span>
+        </Link>
       </p>
 
       <div className="flex flex-col gap-2">
