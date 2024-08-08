@@ -10,6 +10,7 @@ import LeftBar from './components/LeftBar';
 import GithubStat from './components/GitHubStat';
 import FollowUsers from './components/tabs/FollowUsers';
 import Repository from './components/tabs/Repository';
+import Gists from './components/tabs/Gists';
 
 const Profile = ({ params }: { params: { username: string } }) => {
   const searchParams = useSearchParams();
@@ -50,6 +51,7 @@ const Profile = ({ params }: { params: { username: string } }) => {
         {tab === "followers" && <div className="md:col-span-2"><FollowUsers /></div>}
         {tab === "following" && <div className="md:col-span-2"><FollowUsers /></div>}
         {tab === "repositories" && <div className="md:col-span-2"><Repository /></div>}
+        {tab === "gists" && <div className="md:col-span-2"><Gists /></div>}
       </div>
       {!tab && <div className="mx-auto mt-20"><ContributionGraph /></div>}
     </div>

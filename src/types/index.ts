@@ -249,3 +249,55 @@ export type RepositoryContent = {
   _links: Link;
 };
 // Datatype Finished!
+
+// Gists Datatype
+type ChangeStatus = {
+  total: number;
+  additions: number;
+  deletions: number;
+};
+
+type GistHistory = {
+  user: Owner;
+  version: string;
+  committed_at: string;
+  change_status: ChangeStatus;
+  url: string;
+};
+
+export type GistFile = {
+  filename: string;
+  type: string;
+  language: string;
+  raw_url: string;
+  size: number;
+  truncated?: boolean;
+  content?: string;
+};
+
+export type GistResponse = {
+  url: string;
+  forks_url: string;
+  commits_url: string;
+  id: string;
+  node_id: string;
+  git_pull_url: string;
+  git_push_url: string;
+  html_url: string;
+  files: {
+    [filename: string]: GistFile;
+  };
+  public: boolean;
+  created_at: string;
+  updated_at: string;
+  description: string;
+  comments: number;
+  user: any | null;
+  comments_url: string;
+  owner: Owner;
+  truncated?: boolean;
+  history?: {
+    [version: string]: GistHistory;
+  };
+};
+// Datatype Finished!
