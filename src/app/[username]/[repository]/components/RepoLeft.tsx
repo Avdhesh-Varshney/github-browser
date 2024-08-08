@@ -77,7 +77,7 @@ const RepoLeft = ({ data }: { data: RepositoryData }) => {
         <p className="flex gap-2 items-center">
           <HiOutlineLanguage /> <span className="text-gray-600">Language </span> {data.language}
         </p>
-        <p className='flex gap-2 items-center'>
+        {data.license && <p className='flex gap-2 items-center'>
           {data.license.key === 'mit' ? (<>
             <DiMitlicence /> <span className="text-gray-600">License </span> {data.license.name}
           </>) : data.license.key === '' ? (<>
@@ -85,7 +85,7 @@ const RepoLeft = ({ data }: { data: RepositoryData }) => {
           </>) : (<>
             <TbLicense /> <span className="text-gray-600">License </span> {data.license.name}
           </>)}
-        </p>
+        </p>}
         <p className="flex gap-2 items-center">
           <IoGitBranchOutline /> <span className="text-gray-600">Default Branch </span> {data.default_branch}
         </p>
