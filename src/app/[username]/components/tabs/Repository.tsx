@@ -49,7 +49,7 @@ const Repository = () => {
   }
 
   if (repoData.length === 0) {
-    return <div className="text-center text-gray-500">No Followers Found!</div>;
+    return <div className="text-center text-gray-500">No Repository Found!</div>;
   }
 
   return (

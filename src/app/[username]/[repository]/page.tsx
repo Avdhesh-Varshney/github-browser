@@ -47,14 +47,6 @@ const Repository = ({ params }: { params: { username: string, repository: string
 
   if (!data) return <p className='text-center text-gray-500 mt-2'>No Data Found!</p>;
 
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      console.log('Text copied to clipboard');
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    });
-  };
-
   return (
     <div className="max-w-7xl mx-auto md:px-16 px-6 my-16 flex flex-col gap-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
