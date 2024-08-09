@@ -15,7 +15,7 @@ const getRandomEmoji = () => {
   return emojis[randomIndex];
 };
 
-const Repository = () => {
+const Repository = ({value}: {value: string}) => {
   const { usersDetails: user } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +25,7 @@ const Repository = () => {
   useEffect(() => {
     const fetchData = async (page: number) => {
       try {
-        const data = await FetchData(`${user.url}/repos?page=${page}&per_page=${perPage}`);
+        const data = await FetchData(`${user.url}/${value}?page=${page}&per_page=${perPage}`);
         setRepoData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -61,7 +61,7 @@ const Repository = () => {
       <div className='flex flex-col items-center'>
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
           {repoData.map((repo) => (
-            <Link href={`/${user.login}/${repo.name}`} key={repo.id}>
+            <Link href={`/${repo.full_name}`} key={repo.id}>
               <div key={repo.id} className={`p-8 rounded shadow transition-all hover:scale-105 h-full ${(user.login === repo.name) ? 'bg-[#181918]' : 'bg-[#2e2e2e]'}`}>
                 <h4 className='text-xl font-semibold opacity-70 flex justify-between items-center'>
                   <span className='flex items-center'>

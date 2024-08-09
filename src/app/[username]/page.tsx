@@ -50,8 +50,9 @@ const Profile = ({ params }: { params: { username: string } }) => {
         {!tab && <div className="md:col-span-2"><GithubStat /></div>}
         {tab === "followers" && <div className="md:col-span-2"><FollowUsers /></div>}
         {tab === "following" && <div className="md:col-span-2"><FollowUsers /></div>}
-        {tab === "repositories" && <div className="md:col-span-2"><Repository /></div>}
+        {tab === "repositories" && <div className="md:col-span-2"><Repository value="repos" /></div>}
         {tab === "gists" && <div className="md:col-span-2"><Gists /></div>}
+        {tab === "stars" && <div className="md:col-span-2"><Repository value="starred" /></div>}
       </div>
       {!tab && <div className="mx-auto mt-20"><ContributionGraph /></div>}
     </div>

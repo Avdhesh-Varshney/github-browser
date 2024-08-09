@@ -53,13 +53,17 @@ const LeftBar = () => {
       <p className="flex my-4 gap-1 items-center">
         <Link href="?tab=followers" className="flex items-center">
           <RiGroupLine className="mr-1" />
-          <span>{user.followers}</span>
-          <span className="ml-1 text-gray-600">followers</span>
+          <span className='hover:text-blue-500'>
+            {user.followers}
+            <span className="ml-1 text-gray-600 hover:text-blue-500">followers</span>
+          </span>
         </Link>
         <span className="mx-2">·</span>
         <Link href="?tab=following">
-          <span>{user.following}</span>
-          <span className="ml-1 text-gray-600">following</span>
+          <span className='hover:text-blue-500'>
+            {user.following}
+            <span className="ml-1 text-gray-600 hover:text-blue-500">following</span>
+          </span>
         </Link>
       </p>
 
@@ -80,23 +84,27 @@ const LeftBar = () => {
           <VscAccount /> <span className="text-gray-600">Updated At </span> {formatDate(user.updated_at)}
         </p>
         <Link href="?tab=repositories">
-          <p className="flex gap-1 items-center">
-            <GoRepo /> <span className="text-gray-600">Repositories</span> {user.public_repos}
+          <p className="flex gap-1 items-center hover:text-blue-500">
+            <GoRepo /> <span className="text-gray-600 hover:text-blue-500">Repositories</span> {user.public_repos}
           </p>
         </Link>
         <Link href="?tab=gists">
-          <p className="flex gap-1 items-center">
-            <VscGistSecret /> <span className="text-gray-600">Gists</span> {user.public_gists}
+          <p className="flex gap-1 items-center hover:text-blue-500">
+            <VscGistSecret /> <span className="text-gray-600 hover:text-blue-500">Gists</span> {user.public_gists}
           </p>
         </Link>
       </div>
 
       <div className="flex flex-col border-t-2 mt-4 pt-4 gap-2">
+        <Link href="?tab=stars">
+          <button className='bg-[#181918] text-white rounded py-2 px-6 border border-gray-600 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-[#282828] active:bg-[#3a3a3a] w-full'>
+            Starred Repos
+          </button>
+        </Link>
         <Button text='Recent Events' onClick={handleClick("events")} />
         <Button text='Recent Notifications' onClick={handleClick("notifications")} />
         <Button text='Organizations' onClick={handleClick("organizations")} />
         <Button text='Subscriptions' onClick={handleClick("subscriptions")} />
-        <Button text='Starred Repos' onClick={handleClick("starred")} />
       </div>
 
     </div>
