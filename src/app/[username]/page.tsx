@@ -11,6 +11,7 @@ import GithubStat from './components/GitHubStat';
 import FollowUsers from './components/tabs/FollowUsers';
 import Repository from './components/tabs/Repository';
 import Gists from './components/tabs/Gists';
+import Subscription from './components/tabs/Subscription';
 
 const Profile = ({ params }: { params: { username: string } }) => {
   const searchParams = useSearchParams();
@@ -53,6 +54,7 @@ const Profile = ({ params }: { params: { username: string } }) => {
         {tab === "repositories" && <div className="md:col-span-2"><Repository value="repos" /></div>}
         {tab === "gists" && <div className="md:col-span-2"><Gists /></div>}
         {tab === "stars" && <div className="md:col-span-2"><Repository value="starred" /></div>}
+        {tab === "subscriptions" && <div className='md:col-span-2'><Subscription username={params.username} /></div>}
       </div>
       {!tab && <div className="mx-auto mt-20"><ContributionGraph /></div>}
     </div>
