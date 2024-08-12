@@ -111,7 +111,11 @@ const LeftBar = () => {
             Organizations
           </button>
         </Link>
-        <Button text='Recent Events' onClick={handleClick("events")} />
+        <Link href="?tab=events">
+          <button className='bg-[#181918] text-white rounded py-2 px-6 border border-gray-600 shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-[#282828] active:bg-[#3a3a3a] w-full'>
+            Recent Events
+          </button>
+        </Link>
         <Button text='Recent Notifications' onClick={handleClick("notifications")} />
       </div>
 

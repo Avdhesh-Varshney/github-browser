@@ -13,6 +13,7 @@ import Repository from './components/tabs/Repository';
 import Gists from './components/tabs/Gists';
 import Subscription from './components/tabs/Subscription';
 import Organization from './components/tabs/Organization';
+import Event from './components/tabs/Event';
 
 const Profile = ({ params }: { params: { username: string } }) => {
   const searchParams = useSearchParams();
@@ -57,6 +58,7 @@ const Profile = ({ params }: { params: { username: string } }) => {
         {tab === "stars" && <div className="md:col-span-2"><Repository value="starred" /></div>}
         {tab === "subscriptions" && <div className='md:col-span-2'><Subscription username={params.username} /></div>}
         {tab === "organizations" && <div className='md:col-span-2'><Organization /></div>}
+        {tab === "events" && <div className='md:col-span-2'><Event /></div>}
       </div>
       {!tab && <div className="mx-auto mt-20"><ContributionGraph /></div>}
     </div>
