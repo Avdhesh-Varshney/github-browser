@@ -66,18 +66,19 @@ const Organization = () => {
             </div>
           ))}
         </div>
+
         <div className="flex gap-4 mt-6">
-            <Button
-              text="Previous"
-              onClick={handlePrevious}
-              hidden={currentPage === 1}
-            />
-            <Button
-              text="Next"
-              onClick={handleNext}
-              hidden={currentPage === totalPages}
-            />
-          </div>
+          <Button
+            text="Previous"
+            onClick={handlePrevious}
+            hidden={currentPage === 1}
+          />
+          <Button
+            text="Next"
+            onClick={handleNext}
+            hidden={currentPage === totalPages}
+          />
+        </div>
       </div>
 
     </div>
