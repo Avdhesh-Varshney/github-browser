@@ -33,7 +33,7 @@ const RepoLeft = ({ data }: { data: RepositoryData }) => {
         )}
       </div>
       <h2 className="mt-5 text-2xl font-semibold">{data.name}</h2>
-      <Link href={data.html_url}><p className="text-gray-600 text-lg">/{data.full_name}</p></Link>
+      <Link href={data.html_url || "#"}><p className="text-gray-600 text-lg">/{data.full_name}</p></Link>
       <p className='my-4'>{data.description}</p>
 
       <p className='flex flex-col items-center p-2 rounded-lg border bg-[#181918]'>RepoID - {data.id}</p>
@@ -62,18 +62,22 @@ const RepoLeft = ({ data }: { data: RepositoryData }) => {
       </p>
 
       <div className="flex flex-col border-t-2 mt-4 pt-4 gap-2">
+        {data.created_at && 
         <p className='flex gap-2 items-center'>
           <VscAccount /> <span className="text-gray-600">Created At </span> {formatDate(data.created_at)}
-        </p>
+        </p>}
+        {data.updated_at && 
         <p className="flex gap-2 items-center">
           <MdOutlineSystemUpdateAlt /> <span className="text-gray-600">Updated At </span> {formatDate(data.updated_at)}
-        </p>
+        </p>}
+        {data.pushed_at && 
         <p className="flex gap-2 items-center">
           <GoRepoPush /> <span className="text-gray-600">Pushed At </span> {formatDate(data.pushed_at)}
-        </p>
+        </p>}
+        {data.size && 
         <p className="flex gap-2 items-center">
           <HiOutlineDatabase /> <span className="text-gray-600">Size </span> {Math.ceil(data.size / 1024)} MB
-        </p>
+        </p>}
         <p className="flex gap-2 items-center">
           <HiOutlineLanguage /> <span className="text-gray-600">Language </span> {data.language}
         </p>

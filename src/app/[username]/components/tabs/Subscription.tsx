@@ -32,7 +32,7 @@ const Subscription = ({ username }: { username: string }) => {
           allRepos = [...allRepos, ...fetchedRepos];
           page++;
         } while (fetchedRepos.length === perPage);
-        const filteredData = allRepos.filter((repo) => repo.owner.login !== username);
+        const filteredData = allRepos.filter((repo) => repo.owner?.login !== username);
         setRepoData(filteredData);
       } catch (error) {
         console.error('Error fetching data:', error);
