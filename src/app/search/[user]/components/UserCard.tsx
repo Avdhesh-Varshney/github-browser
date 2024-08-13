@@ -18,7 +18,7 @@ const UserCard = ({ user }: { user: User }) => {
         className="rounded-full border-4 border-gray-700"
       />
 
-      <h2 className="mt-5 text-center text-2xl font-bold text-white">{trimName(name) || 'No Name'}</h2>
+      {name && <h2 className="mt-5 text-center text-2xl font-bold text-white">{trimName(name) || 'No Name'}</h2>}
 
       <p className="text-gray-400">@{username}</p>
 
