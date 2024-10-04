@@ -9,7 +9,7 @@ export const FetchData = async (URL: string) => {
     });
 
     if (!response.ok) {
-      throw new Error('An error occurred while fetching the users');
+      throw new Error('An error occurred while fetching the data');
     }
 
     const data = await response.json();

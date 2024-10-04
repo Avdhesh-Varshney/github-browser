@@ -15,24 +15,24 @@ const SearchPage = ({ params }: { params: { user: string } }) => {
   const { searchUserData, setSearchUserData } = useGlobalContext();
 
   const getData = async () => {
-    let url: string = `https://github.com/search?q=${params.user}&type=${type}&p=${page}`;
+    let url: string = `https://api.github.com/search/${type}?q=${params.user}&page=${page}`;
     try {
       let data: Users = await FetchData(url);
-      setMaxPage(data.payload.page_count);
-      let apiUsers = data.payload.results;
+      setMaxPage(data.total_count);
+      let apiUsers = data.items;
       setSearchUserData(apiUsers);
       setPage(page + 1);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-
+  
   const loadMoreData = async () => {
-    let url: string = `https://github.com/search?q=${params.user}&type=${type}&p=${page}`;
+    let url: string = `https://api.github.com/search/${type}?q=${params.user}&page=${page}`;
     try {
       let data: Users = await FetchData(url);
-      setMaxPage(data.payload.page_count);
-      let apiUsers = data.payload.results;
+      setMaxPage(data.total_count);
+      let apiUsers = data.items;
       setSearchUserData(prevUsersData => [...prevUsersData, ...apiUsers]);
       setPage(page + 1);
     } catch (error) {
