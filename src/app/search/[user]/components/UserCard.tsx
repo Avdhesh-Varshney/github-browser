@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const UserCard = ({ user }: { user: User }) => {
-  const [id, name, username, followers, location] = [user.id, user.hl_name, user.display_login, user.followers, user.location];
+  const [id, username] = [user.id, user.login];
   const img_url = `https://avatars.githubusercontent.com/u/${id}?v=4`;
 
   return (
@@ -18,21 +18,9 @@ const UserCard = ({ user }: { user: User }) => {
         className="rounded-full border-4 border-gray-700"
       />
 
-      {name && <h2 className="mt-5 text-center text-2xl font-bold text-white">{trimName(name) || 'No Name'}</h2>}
+      {username && <h2 className="mt-5 text-center text-2xl font-bold text-white">{trimName(username) || 'No Name'}</h2>}
 
       <p className="text-gray-400">@{username}</p>
-
-      <div className="mt-5 flex justify-around w-full">
-        <div className="text-center">
-          <p className="font-bold text-white">{followers}</p>
-          <p className="text-gray-400">Followers</p>
-        </div>
-
-        <div className="text-center">
-          <p className="font-bold text-white">{location || 'Not found'}</p>
-          <p className="text-gray-400">Location</p>
-        </div>
-      </div>
 
       <div className="mt-auto w-full text-center">
         <Link href={`/${username}`} className="inline-block mt-5 rounded py-2 px-4 bg-[#484646]/70 text-white font-semibold hover:bg-[#616060] transition-colors duration-300">

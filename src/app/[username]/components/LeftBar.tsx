@@ -45,7 +45,7 @@ const LeftBar = () => {
       </div>
 
       <h2 className="mt-5 text-2xl font-semibold">{user.name || 'No Name'}</h2>
-      <p className="text-gray-600 text-lg">@{user.login}</p>
+      {user.html_url && <Link className='text-gray-600 text-lg flex items-center gap-1' href={user.html_url} target='_blank' rel='noopener noreferrer'><FaGithub /> {user.login}</Link>}
       <p className='my-4'>{user.bio}</p>
 
       <p className='flex flex-col items-center p-2 rounded-lg border bg-[#181918]'>UserID - {user.id}</p>
@@ -72,7 +72,6 @@ const LeftBar = () => {
         {user.location && <p className='flex gap-1 items-center'><GoLocation /> {user.location}</p>}
         {user.email && <p className='flex gap-1 items-center'><MdOutlineMailOutline /> {user.email}</p>}
         {user.blog && <Link className='flex gap-1 items-center' href={user.blog} target='_blank' rel="noopener noreferrer"><IoIosLink /> {user.blog}</Link>}
-        {user.html_url && <Link className='flex gap-1 items-center' href={user.html_url} target='_blank' rel='noopener noreferrer'><FaGithub /> {user.html_url}</Link>}
         {user.twitter_username && <Link className='flex gap-1 items-center' href={`https://x.com/${user.twitter_username}`} target='_blank' rel="noopener noreferrer"><FaXTwitter /> {user.twitter_username}</Link>}
       </div>
 
