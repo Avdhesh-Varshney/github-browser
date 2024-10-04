@@ -23,7 +23,7 @@ export function getGitHubYears(joinYear: number | undefined): number[] {
 const ContributionGraph = () => {
   const { usersDetails: user } = useGlobalContext();
   const [calendarYear, setCalendarYear] = useState<number | undefined>(undefined);
-  const createdYear = new Date(user.created_at).getFullYear();
+  const createdYear = user.created_at ? new Date(user.created_at).getFullYear() : undefined;
   const today = new Date().getFullYear();
   const years = getGitHubYears(createdYear);
 

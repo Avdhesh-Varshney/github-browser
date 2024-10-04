@@ -20,7 +20,7 @@ const Repository = ({value}: {value: string}) => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [repoData, setRepoData] = useState<RepositoryData[]>([]);
-  const totalPages = Math.ceil(user.public_repos / perPage);
+  const totalPages = user.public_repos ? Math.ceil(user.public_repos / perPage) : 1;
 
   useEffect(() => {
     const fetchData = async (page: number) => {

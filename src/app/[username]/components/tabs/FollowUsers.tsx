@@ -14,8 +14,8 @@ const FollowUsers = () => {
   const tab = searchParams.get('tab');
   const { usersDetails: user } = useGlobalContext();
   let totalPages = 1;
-  if(tab === 'followers') totalPages = Math.ceil(user["followers"] / 30);
-  else if(tab === 'following') totalPages = Math.ceil(user["following"] / 30);
+  if(tab === 'followers') totalPages = user['followers']? Math.ceil(user['followers'] / 30) : 1;
+  else if(tab === 'following') totalPages = user['following']? Math.ceil(user['following'] / 30) : 1;
 
   const [loading, setLoading] = useState(true);
   const [followersData, setFollowersData] = useState<FollowData[]>([]);

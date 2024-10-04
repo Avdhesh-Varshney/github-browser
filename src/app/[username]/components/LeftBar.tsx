@@ -26,7 +26,7 @@ const LeftBar = () => {
 
       <div className="relative mx-auto">
         <Image
-          src={user.avatar_url}
+          src={user.avatar_url? user.avatar_url : '/user.png'}
           alt={user.login}
           width={300}
           height={300}
@@ -77,10 +77,10 @@ const LeftBar = () => {
 
       <div className="flex flex-col border-t-2 mt-4 pt-4 gap-2">
         <p className='flex gap-1 items-center'>
-          <VscAccount /> <span className="text-gray-600">Created At </span> {formatDate(user.created_at)}
+          <VscAccount /> <span className="text-gray-600">Created At </span> {user.created_at? formatDate(user.created_at): 'No Date'}
         </p>
         <p className="flex gap-1 items-center">
-          <VscAccount /> <span className="text-gray-600">Updated At </span> {formatDate(user.updated_at)}
+          <VscAccount /> <span className="text-gray-600">Updated At </span> {user.updated_at? formatDate(user.updated_at): 'No Date'}
         </p>
         <Link href="?tab=repositories">
           <p className="flex gap-1 items-center hover:text-blue-500">

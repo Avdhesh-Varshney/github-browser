@@ -22,7 +22,7 @@ const Gists = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [gistData, setGistData] = useState<GistResponse[]>([]);
-  const totalPages = Math.ceil(user.public_gists / perPage);
+  const totalPages = user.public_gists ? Math.ceil(user.public_gists / perPage) : 1;
 
   useEffect(() => {
     const fetchData = async (page: number) => {

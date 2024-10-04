@@ -1,6 +1,6 @@
 'use client';
 
-import { RepositoryData, User, UserDetails } from "@/types";
+import { User } from "@/types";
 import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
 
 interface ContextProps {
@@ -10,8 +10,8 @@ interface ContextProps {
   searchUserData: User[];
   setSearchUserData: Dispatch<SetStateAction<User[]>>;
 
-  usersDetails: UserDetails;
-  setUsersDetails: Dispatch<SetStateAction<UserDetails>>;
+  usersDetails: User;
+  setUsersDetails: Dispatch<SetStateAction<User>>;
 };
 
 export const GlobalContext = createContext<ContextProps>({
@@ -21,14 +21,14 @@ export const GlobalContext = createContext<ContextProps>({
   searchUserData: [],
   setSearchUserData: () => {},
 
-  usersDetails: {} as UserDetails,
+  usersDetails: {} as User,
   setUsersDetails: () => {}
 });
 
 export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [userName, setUserName] = useState<string>('');
   const [searchUserData, setSearchUserData] = useState<User[]>([]);
-  const [usersDetails, setUsersDetails] = useState<UserDetails>({} as UserDetails);
+  const [usersDetails, setUsersDetails] = useState<User>({} as User);
 
   return (
     <GlobalContext.Provider
